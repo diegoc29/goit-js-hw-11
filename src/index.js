@@ -1,3 +1,5 @@
+import Notiflix from "notiflix";
+
 const apiKey = '41188201-214d0d91838319eb1191e729e';
     let currentPage = 1;
 

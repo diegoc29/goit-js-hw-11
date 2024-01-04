@@ -8,20 +8,22 @@ const apiKey = '41188201-214d0d91838319eb1191e729e';
     const loadMoreBtn = document.querySelector('.load-more');
 
     searchForm.addEventListener('submit', async function(event) {
-      event.preventDefault();
-      const searchQuery = event.target.searchQuery.value.trim();
+  event.preventDefault();
 
-      // Limpiar galería antes de realizar una nueva búsqueda
-      
+  // Acceder al elemento del formulario por su nombre
+  const searchQueryInput = event.target.elements.searchQuery;
+  const searchQuery = searchQueryInput.value.trim();
 
-      if (searchQuery !== '') {
-        await performSearch(searchQuery);
-        loadMoreBtn.style.display = 'block';
-      } else {
-        // Manejar el caso en el que no se proporciona una cadena de búsqueda
-        Notiflix.Notify.Warning('Please enter a search query.');
-      }
-    });
+  // Limpiar galería antes de realizar una nueva búsqueda
+
+  if (searchQuery !== '') {
+    await performSearch(searchQuery);
+    loadMoreBtn.style.display = 'block';
+  } else {
+    // Manejar el caso en el que no se proporciona una cadena de búsqueda
+    Notiflix.Notify.Warning('Please enter a search query.');
+  }
+});
 
     loadMoreBtn.addEventListener('click', async function() {
       currentPage++;

@@ -32,28 +32,32 @@ const apiKey = '41188201-214d0d91838319eb1191e729e';
     });
 
     async function performSearch(searchQuery) {
-      const apiUrl = `https://pixabay.com/api/?key=${apiKey}&q=${encodeURIComponent(searchQuery)}&image_type=photo&orientation=horizontal&safesearch=true&page=${currentPage}&per_page=40`;
+  const apiUrl = `https://pixabay.com/api/?key=${apiKey}&q=${encodeURIComponent(searchQuery)}&image_type=photo&orientation=horizontal&safesearch=true&page=${currentPage}&per_page=40`;
 
-      try {
-        const response = await fetch(apiUrl);
-        const data = await response.json();
+  try {
+    const response = await fetch(apiUrl);
+    const data = await response.json();
 
-        if (data.totalHits === 0) {
-          Notiflix.Notify.Info("Sorry, there are no images matching your search query. Please try again.");
-        } else {
-          data.hits.forEach(image => {
-            const card = createImageCard(image);
-            gallery.appendChild(card);
-          });
+    if (data.totalHits === 0) {
+      Notiflix.Notify.Info("Sorry, there are no images matching your search query. Please try again.");
+    } else {
+      data.hits.forEach(image => {
+        const card = createImageCard(image);
 
-          // Mostrar u ocultar el botón "Load more" según si hay más resultados
-          loadMoreBtn.style.display = (data.totalHits > currentPage * 40) ? 'block' : 'none';
+        // Verificar si gallery está definido antes de usar appendChild
+        if (gallery) {
+          gallery.appendChild(card);
         }
-      } catch (error) {
-        console.error('Error during the search:', error);
-        Notiflix.Notify.failure('An error occurred during the search. Please try again.');
-      }
+      });
+
+      // Mostrar u ocultar el botón "Load more" según si hay más resultados
+      loadMoreBtn.style.display = (data.totalHits > currentPage * 40) ? 'block' : 'none';
     }
+  } catch (error) {
+    console.error('Error during the search:', error);
+    Notiflix.Notify.failure('An error occurred during the search. Please try again.');
+  }
+}
 
     function createImageCard(image) {
       const card = document.createElement('div');

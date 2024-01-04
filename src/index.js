@@ -48,7 +48,7 @@ const apiKey = '41188201-214d0d91838319eb1191e729e';
           loadMoreBtn.style.display = (data.totalHits > currentPage * 40) ? 'block' : 'none';
         }
       } catch (error) {
-        console.Error('Error during the search:', error);
+        console.error('Error during the search:', error);
         Notiflix.Notify.failure('An error occurred during the search. Please try again.');
       }
     }

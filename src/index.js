@@ -56,6 +56,9 @@ const apiKey = '41188201-214d0d91838319eb1191e729e';
         }
       });
 
+       // Desplazar suavemente después de cargar imágenes
+       smoothScroll(gallery);
+
       // Mostrar u ocultar el botón "Load more" según si hay más resultados
       loadMoreBtn.style.display = (data.totalHits > currentPage * 40) ? 'block' : 'none';
     }
@@ -64,6 +67,17 @@ const apiKey = '41188201-214d0d91838319eb1191e729e';
     Notiflix.Notify.failure('An error occurred during the search. Please try again.');
   }
 }
+
+// Función para desplazamiento suave
+function smoothScroll(element) {
+  const { height: cardHeight } = element.firstElementChild.getBoundingClientRect();
+
+  window.scrollBy({
+    top: cardHeight * 2,
+    behavior: "smooth",
+  });
+}
+
 
     function createImageCard(image) {
       const card = document.createElement('div');

@@ -15,6 +15,10 @@ const apiKey = '41188201-214d0d91838319eb1191e729e';
   const searchQuery = searchQueryInput.value.trim();
 
   // Limpiar galería antes de realizar una nueva búsqueda
+  const gallery = document.querySelector('.gallery');
+  gallery.innerHTML = '';
+
+  currentPage = 1;
 
   if (searchQuery !== '') {
     await performSearch(searchQuery);
@@ -32,7 +36,7 @@ const apiKey = '41188201-214d0d91838319eb1191e729e';
     });
 
     async function performSearch(searchQuery) {
-  const gallery = document.querySelector('.gallery'); // Mover la inicialización aquí
+  const gallery = document.querySelector('.gallery'); // Mover la inicialización aquía
 
   const apiUrl = `https://pixabay.com/api/?key=${apiKey}&q=${encodeURIComponent(searchQuery)}&image_type=photo&orientation=horizontal&safesearch=true&page=${currentPage}&per_page=40`;
 

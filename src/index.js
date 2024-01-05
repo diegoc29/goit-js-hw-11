@@ -32,6 +32,8 @@ const apiKey = '41188201-214d0d91838319eb1191e729e';
     });
 
     async function performSearch(searchQuery) {
+  const gallery = document.querySelector('.gallery'); // Mover la inicialización aquí
+
   const apiUrl = `https://pixabay.com/api/?key=${apiKey}&q=${encodeURIComponent(searchQuery)}&image_type=photo&orientation=horizontal&safesearch=true&page=${currentPage}&per_page=40`;
 
   try {

@@ -27,5 +27,22 @@
   background-position: center;
 }
 
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.photo-card {
+  max-width: 200px; /* Ajusta el tamaño máximo según tus preferencias */
+  margin: 10px;
+  text-align: center;
+}
+
+.photo-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px; /* Añade esquinas redondeadas si lo deseas */
+}
 
 

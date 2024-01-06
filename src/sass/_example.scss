@@ -48,9 +48,13 @@
 .search-form {
   display: flex;
   padding: 20px;
+  align-items: center;
+  justify-content: center;
 }
 
 .load-more {
   display: none;
-  display: flex;
+  align-items: center;
+  justify-content: center;
+  
 }

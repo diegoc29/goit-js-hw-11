@@ -45,9 +45,13 @@
       <div id="myModal" class="modal">
         <div class="modal-content">
           <span class="close" id="closeModalBtn">&times;</span>
-          <img id="modalImage" alt="" loading="lazy" />
+          <div class="modal-gallery">
+            <button id="prevBtn">&lt; Prev</button>
+            <img id="modalImage" alt="" loading="lazy" />
+            <button id="nextBtn">Next &gt;</button>
+          </div>
           <div class="modal-info">
-            <!-- Puedes agregar más detalles de la imagen aquí si lo deseas -->
+            
             <p><b>Likes:</b> <span id="modalLikes"></span></p>
             <p><b>Views:</b> <span id="modalViews"></span></p>
             <p><b>Comments:</b> <span id="modalComments"></span></p>

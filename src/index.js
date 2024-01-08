@@ -106,30 +106,24 @@ function smoothScroll(element) {
     }
 
   
-  // Mostrar la ventana modal al hacer clic en una imagen
+  // Variables para el control de la galería modal
+const modalImage = document.getElementById('modalImage');
+const modalLikes = document.getElementById('modalLikes');
+const modalViews = document.getElementById('modalViews');
+const modalComments = document.getElementById('modalComments');
+const modalDownloads = document.getElementById('modalDownloads');
+const modalGallery = document.querySelector('.modal-gallery');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+let currentImageIndex = -1;
+
+// Mostrar la ventana modal al hacer clic en una imagen
 document.querySelector('.gallery').addEventListener('click', function(event) {
   if (event.target.tagName === 'IMG') {
-    const modalImage = document.getElementById('modalImage');
-    const modalLikes = document.getElementById('modalLikes');
-    const modalViews = document.getElementById('modalViews');
-    const modalComments = document.getElementById('modalComments');
-    const modalDownloads = document.getElementById('modalDownloads');
-
     const selectedImage = event.target;
-    modalImage.src = selectedImage.src;
-    modalImage.alt = selectedImage.alt;
+    currentImageIndex = getImageIndex(selectedImage);
 
-    // Obtener detalles de la imagen desde los atributos de la imagen
-    const likes = selectedImage.nextElementSibling.querySelector('.info-item:nth-child(1)').textContent;
-    const views = selectedImage.nextElementSibling.querySelector('.info-item:nth-child(2)').textContent;
-    const comments = selectedImage.nextElementSibling.querySelector('.info-item:nth-child(3)').textContent;
-    const downloads = selectedImage.nextElementSibling.querySelector('.info-item:nth-child(4)').textContent;
-
-    modalLikes.textContent = likes.split(':')[1].trim();
-    modalViews.textContent = views.split(':')[1].trim();
-    modalComments.textContent = comments.split(':')[1].trim();
-    modalDownloads.textContent = downloads.split(':')[1].trim();
-
+    updateModalContent(selectedImage);
     document.getElementById('myModal').style.display = 'block';
   }
 });
@@ -138,3 +132,47 @@ document.querySelector('.gallery').addEventListener('click', function(event) {
 document.getElementById('closeModalBtn').addEventListener('click', function() {
   document.getElementById('myModal').style.display = 'none';
 });
+
+// Navegación a la imagen anterior
+prevBtn.addEventListener('click', function() {
+  if (currentImageIndex > 0) {
+    currentImageIndex--;
+    const selectedImage = getGalleryImages()[currentImageIndex];
+    updateModalContent(selectedImage);
+  }
+});
+
+// Navegación a la siguiente imagen
+nextBtn.addEventListener('click', function() {
+  const galleryImages = getGalleryImages();
+  if (currentImageIndex < galleryImages.length - 1) {
+    currentImageIndex++;
+    const selectedImage = galleryImages[currentImageIndex];
+    updateModalContent(selectedImage);
+  }
+});
+
+function getGalleryImages() {
+  return Array.from(document.querySelectorAll('.gallery img'));
+}
+
+function getImageIndex(imageElement) {
+  const galleryImages = getGalleryImages();
+  return galleryImages.indexOf(imageElement);
+}
+
+function updateModalContent(selectedImage) {
+  modalImage.src = selectedImage.src;
+  modalImage.alt = selectedImage.alt;
+
+  // Obtener detalles de la imagen desde los atributos de la imagen
+  const likes = selectedImage.nextElementSibling.querySelector('.info-item:nth-child(1)').textContent;
+  const views = selectedImage.nextElementSibling.querySelector('.info-item:nth-child(2)').textContent;
+  const comments = selectedImage.nextElementSibling.querySelector('.info-item:nth-child(3)').textContent;
+  const downloads = selectedImage.nextElementSibling.querySelector('.info-item:nth-child(4)').textContent;
+
+  modalLikes.textContent = likes.split(':')[1].trim();
+  modalViews.textContent = views.split(':')[1].trim();
+  modalComments.textContent = comments.split(':')[1].trim();
+  modalDownloads.textContent = downloads.split(':')[1].trim();
+}

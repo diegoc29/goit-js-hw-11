@@ -105,11 +105,36 @@ function smoothScroll(element) {
       return card;
     }
 
-    document.getElementById('openModalBtn').addEventListener('click', function() {
-      document.getElementById('myModal').style.display = 'block';
-    });
-    
-    // Cerrar la ventana modal
-    document.getElementById('closeModalBtn').addEventListener('click', function() {
-      document.getElementById('myModal').style.display = 'none';
-    });
+  
+  // Mostrar la ventana modal al hacer clic en una imagen
+document.querySelector('.gallery').addEventListener('click', function(event) {
+  if (event.target.tagName === 'IMG') {
+    const modalImage = document.getElementById('modalImage');
+    const modalLikes = document.getElementById('modalLikes');
+    const modalViews = document.getElementById('modalViews');
+    const modalComments = document.getElementById('modalComments');
+    const modalDownloads = document.getElementById('modalDownloads');
+
+    const selectedImage = event.target;
+    modalImage.src = selectedImage.src;
+    modalImage.alt = selectedImage.alt;
+
+    // Obtener detalles de la imagen desde los atributos de la imagen
+    const likes = selectedImage.nextElementSibling.querySelector('.info-item:nth-child(1)').textContent;
+    const views = selectedImage.nextElementSibling.querySelector('.info-item:nth-child(2)').textContent;
+    const comments = selectedImage.nextElementSibling.querySelector('.info-item:nth-child(3)').textContent;
+    const downloads = selectedImage.nextElementSibling.querySelector('.info-item:nth-child(4)').textContent;
+
+    modalLikes.textContent = likes.split(':')[1].trim();
+    modalViews.textContent = views.split(':')[1].trim();
+    modalComments.textContent = comments.split(':')[1].trim();
+    modalDownloads.textContent = downloads.split(':')[1].trim();
+
+    document.getElementById('myModal').style.display = 'block';
+  }
+});
+
+// Cerrar la ventana modal al hacer clic en el botón de cerrar
+document.getElementById('closeModalBtn').addEventListener('click', function() {
+  document.getElementById('myModal').style.display = 'none';
+});

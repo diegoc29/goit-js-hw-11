@@ -18,15 +18,6 @@
         />
         <button type="submit">Search</button>
       </form>
-
-      <button id="openModalBtn"></button>
-
-  <div id="myModal" class="modal">
-    <div class="modal-content">
-      <span class="close" id="closeModalBtn">&times;</span>
-      <p>placeholder</p>
-    </div>
-  </div>
       
       <div class="gallery">
         <div class="photo-card">
@@ -50,6 +41,20 @@
       </div> 
 
       <button type="button" class="load-more" style="display: none;">Load more</button>
+
+      <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span class="close" id="closeModalBtn">&times;</span>
+          <img id="modalImage" alt="" loading="lazy" />
+          <div class="modal-info">
+            <!-- Puedes agregar más detalles de la imagen aquí si lo deseas -->
+            <p><b>Likes:</b> <span id="modalLikes"></span></p>
+            <p><b>Views:</b> <span id="modalViews"></span></p>
+            <p><b>Comments:</b> <span id="modalComments"></span></p>
+            <p><b>Downloads:</b> <span id="modalDownloads"></span></p>
+          </div>
+        </div>
+      </div>
 
     <!--<include src="./partials/example.html"></include>-->
   </body>

@@ -56,9 +56,10 @@
   display: none;
   margin-bottom: 20px;
   margin-left: 45%;
-  background-color: darkblue;
+  
     
 }
+
 
 .modal {
   display: none;
@@ -71,11 +72,13 @@
 }
 
 .modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background-color: #fff;
-  margin: 15% auto;
   padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
+  text-align: center;
 }
 
 .close {
@@ -83,11 +86,11 @@
   float: right;
   font-size: 28px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .close:hover,
 .close:focus {
   color: black;
   text-decoration: none;
-  cursor: pointer;
 }

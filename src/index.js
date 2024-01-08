@@ -104,3 +104,12 @@ function smoothScroll(element) {
 
       return card;
     }
+
+    document.getElementById('openModalBtn').addEventListener('click', function() {
+      document.getElementById('myModal').style.display = 'block';
+    });
+    
+    // Cerrar la ventana modal
+    document.getElementById('closeModalBtn').addEventListener('click', function() {
+      document.getElementById('myModal').style.display = 'none';
+    });

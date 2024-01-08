@@ -124,6 +124,7 @@ document.querySelector('.gallery').addEventListener('click', function(event) {
     currentImageIndex = getImageIndex(selectedImage);
 
     updateModalContent(selectedImage);
+    toggleModalControls(true); // Mostrar flechas y detalles
     document.getElementById('myModal').style.display = 'block';
   }
 });
@@ -131,8 +132,24 @@ document.querySelector('.gallery').addEventListener('click', function(event) {
 // Cerrar la ventana modal al hacer clic en el botón de cerrar
 document.getElementById('closeModalBtn').addEventListener('click', function() {
   document.getElementById('myModal').style.display = 'none';
+  toggleModalControls(false); // Ocultar flechas y detalles
 });
 
+// ...
+
+// Función para mostrar u ocultar flechas y detalles según la visibilidad
+function toggleModalControls(show) {
+  const modalNav = document.querySelectorAll('.modal-nav');
+  const modalInfoLabels = document.querySelectorAll('.modal-info p');
+
+  modalNav.forEach(nav => {
+    nav.style.display = show ? 'block' : 'none';
+  });
+
+  modalInfoLabels.forEach(label => {
+    label.style.display = show ? 'block' : 'none';
+  });
+}
 // Navegación a la imagen anterior
 prevBtn.addEventListener('click', function() {
   if (currentImageIndex > 0) {

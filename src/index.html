@@ -42,24 +42,21 @@
 
       <button type="button" class="load-more" style="display: none;">Load more</button>
 
-      <div id="myModal" class="modal">
-        <div class="modal-content">
-          <span class="close" id="closeModalBtn">&times;</span>
-          <div class="modal-gallery">
-            <button id="prevBtn" class="modal-nav">&lt;</button>
-            <img id="modalImage" alt="" loading="lazy" />
-            <button id="nextBtn" class="modal-nav">&gt;</button>
-          </div>
-          <div class="modal-info">
-           
-            <p><b>Likes:</b> <span id="modalLikes"></span></p>
-            <p><b>Views:</b> <span id="modalViews"></span></p>
-            <p><b>Comments:</b> <span id="modalComments"></span></p>
-            <p><b>Downloads:</b> <span id="modalDownloads"></span></p>
-          </div>
-        </div>
-      </div>
-
-    <!--<include src="./partials/example.html"></include>-->
-  </body>
-</html>
+    
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close" id="closeModalBtn">&times;</span>
+    <div class="modal-gallery">
+      <button id="prevBtn" class="modal-nav">&lt;</button>
+      <img id="modalImage" alt="" loading="lazy" />
+      <button id="nextBtn" class="modal-nav">&gt;</button>
+    </div>
+    <div class="modal-info">
+      
+      <p id="modalLikesLabel"><b>Likes:</b> <span id="modalLikes"></span></p>
+      <p id="modalViewsLabel"><b>Views:</b> <span id="modalViews"></span></p>
+      <p id="modalCommentsLabel"><b>Comments:</b> <span id="modalComments"></span></p>
+      <p id="modalDownloadsLabel"><b>Downloads:</b> <span id="modalDownloads"></span></p>
+    </div>
+  </div>
+</div>
